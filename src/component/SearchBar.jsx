@@ -20,7 +20,7 @@ const SearchBar = () => {
                 placeholder="Search..."
                 value=""
                 onChange={() => { }} />
-            <IconButton type="submit" sx={{ p: '10px', color: 'red' }}>
+            <IconButton type="submit" sx={{ p: '10px', color: '#00f15e' }}>
                 <Search />
             </IconButton>
         </Paper>
