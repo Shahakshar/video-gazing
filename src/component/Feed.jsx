@@ -1,8 +1,7 @@
-// import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {Box, Stack, Typography} from '@mui/material';
 import {SideBar, Videos } from './';
 import {fetchFromAPI} from '../utils/FetchFromAPI';
-import { useEffect } from 'react';
 
 const Feed = () => {
 
