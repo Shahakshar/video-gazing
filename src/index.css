@@ -1,7 +1,7 @@
 html,
 body {
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -26,8 +26,8 @@ a {
 }
 
 .category-btn:hover {
-  background-color: #00f15e ;
-  color: black ;
+  background-color: #00Fe15 !important;
+  color: white !important;
 }
 
 .category-btn:hover span{
@@ -78,7 +78,6 @@ a {
   .scroll-horizontal {
     overflow: auto !important;
   }
-
   .react-player {
     height: 45vh !important;
   }

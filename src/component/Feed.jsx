@@ -1,38 +1,41 @@
-import React, {useState, useEffect} from 'react';
-import {Box, Stack, Typography} from '@mui/material';
-import {SideBar, Videos } from './';
-import {fetchFromAPI} from '../utils/fetchFromAPI';
+import React, { useEffect, useState } from "react";
+import { Box, Stack, Typography } from "@mui/material";
+
+import { fetchFromAPI } from "../utils/fetchFromAPI";
+import { Videos, SideBar } from "./";
 
 const Feed = () => {
-
-  const [selectedCategory, setSelectedCategory] = useState('New');
+  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [videos, setVideos] = useState([])
 
   useEffect(() => {
-      fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-   }, [selectedCategory]);
+
+    fetchFromAPI(`search?part=snippet&videoId="M7FIvfx5J10"&maxResults=50&q=${selectedCategory}`)
+      .then((data) => {
+          setVideos(data.items)
+      })
+      .catch((error) => {
+          console.log(error);
+      })
+    }, [selectedCategory]
+  );
 
   return (
-    <Stack sx={{flexDirection: {sx: "column", md:"row"}}}>
-      <Box sx = {{height: {sx:'auto', md:'92vh'}, borderRight: '1px solid #3d3d3d', px: {sx: 0, md:2}}}>
-        <SideBar 
-           selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}
-        />
-        <Typography className='copyright' variant='body2' sx={{mt:1.5, color:'#fff'}}> By Ak_Dev</Typography>
+    <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
+      <Box sx={{ height: { sx: "auto", md: "92vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
+        <SideBar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+        
+        <Typography className="copyright" variant="body2" sx={{ mt: 1.5, color: "#fff", }}>
+          Made By Ak_DEV
+        </Typography>
       </Box>
 
-
-      <Box p={2} sx={{
-        overflowY: 'auto', height:'90vh', flex: 2
-      }}>
-        <Typography variant='h4' fontWeight="bold" mb={2} sx={{
-          color: 'white'
-        }}>
-          {selectedCategory} <span style={{color: '#00f15e'}}>
-            Videos
-          </span>
+      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+        <Typography variant="h4" fontWeight="bold" mb={2} sx={{ color: "white" }}>
+          {selectedCategory} <span style={{ color: "#00f15e" }}>videos</span>
         </Typography>
 
-        <Videos />
+        <Videos videos={videos}/>
       </Box>
     </Stack>
   );

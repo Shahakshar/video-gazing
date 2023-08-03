@@ -3,9 +3,9 @@ import {categories} from '../utils/constants';
 
 export const SideBar = ({selectedCategory, setSelectedCategory}) => (
     <Stack sx={{
-        overflowY: "auto", 
+        overflowX: "auto", 
         height: {sx: 'auto', md: '95%'},
-        flexDirection: { md: 'column'},
+        flexDirection: { md: 'column'}
     }}>
         {categories.map((category) => (
             <button className='category-btn'
